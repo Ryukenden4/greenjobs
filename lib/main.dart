@@ -1,23 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:greenjobs/responsive/mobileScaffold.dart';
-import 'package:greenjobs/responsive/responsive_layout.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+import 'main/app.dart';
+import 'main/app_env.dart';
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+Future<void> main() async {
+  await dotenv.load(fileName: '.env');
+  EnvInfo.initialize(AppEnvironment.PROD);
+  await Supabase.initialize(
+    url: EnvInfo.connectionString,
+    anonKey: EnvInfo.apiAnonKey,
+  );
 
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(useMaterial3: true),
-      debugShowCheckedModeBanner: false,
-      home: responsiveLayout(
-        mobileScaffold: const MobileScafford(),
-      ),
-    );
-  }
+  runApp(const ProviderScope(child: MainApp()));
 }

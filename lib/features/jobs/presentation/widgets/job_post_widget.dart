@@ -1,50 +1,43 @@
 // ignore_for_file: body_might_complete_normally_nullable, prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:greenjobs/responsive/JobDetailPage.dart';
-import 'package:greenjobs/responsive/mobileScaffold.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:greenjobs/routes/routes.dart';
+import 'package:intl/intl.dart';
 import 'package:like_button/like_button.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
-class mySquare extends StatelessWidget {
+import '../../../../shared/domain/models/entities/job.dart';
+
+class JobPostWidget extends ConsumerStatefulWidget {
   final Job job;
 
-  mySquare({required this.job});
+  JobPostWidget({required this.job});
 
+  @override
+  ConsumerState<JobPostWidget> createState() => _JobPostWidgetState();
+}
+
+class _JobPostWidgetState extends ConsumerState<JobPostWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => JobDetailPage(job: job)),
-        );
+        JobDetailsRoute(jobId: widget.job.id!).go(context);
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 30.0),
-        child: Container(
-          height: 400,
-          decoration: BoxDecoration(
-            color: Colors.grey[200],
-            borderRadius: BorderRadius.circular(20),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.blue.withOpacity(0.5),
-                spreadRadius: 3,
-                blurRadius: 5,
-                offset: Offset(0, 3),
-              ),
-            ],
-          ),
+        child: Card(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Image.network(
-                    job.image,
-                    width: 120,
-                    height: 120,
+                    widget.job.imageUrls.firstOrNull ?? '',
+                    width: 64,
+                    height: 64,
                     fit: BoxFit.cover,
                   ),
                   const SizedBox(width: 10),
@@ -60,10 +53,13 @@ class mySquare extends StatelessWidget {
                             //title display
                             Flexible(
                               child: SelectableText(
-                                job.title,
+                                widget.job.title!,
                                 style: Theme.of(context)
                                     .textTheme
-                                    .titleLarge, // Adjust font size here
+                                    .titleLarge
+                                    ?.copyWith(
+                                        fontWeight: FontWeight
+                                            .bold), // Adjust font size here
                               ),
                             ),
                             LikeButton(
@@ -76,25 +72,24 @@ class mySquare extends StatelessWidget {
                           ],
                         ),
 
-                        //area display
-                        const SizedBox(height: 5),
+                        //company display
                         Row(
                           children: [
                             const Icon(
-                              Icons.location_on,
+                              Icons.business,
                               color: Colors.green,
                             ),
                             const SizedBox(width: 5),
-                            SelectableText(
-                              job.area,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .labelLarge, // Adjust font size here
+                            Flexible(
+                              child: SelectableText(
+                                widget.job.company!.name!,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .labelLarge, // Adjust font size here
+                              ),
                             ),
                           ],
                         ),
-                        const SizedBox(height: 5),
-
                         //location display
                         Row(
                           children: [
@@ -105,7 +100,7 @@ class mySquare extends StatelessWidget {
                             const SizedBox(width: 5),
                             Flexible(
                               child: SelectableText(
-                                job.location,
+                                widget.job.location!,
                                 style: Theme.of(context)
                                     .textTheme
                                     .labelLarge, // Adjust font size here
@@ -118,63 +113,48 @@ class mySquare extends StatelessWidget {
                   ),
                 ],
               ),
-
+              Divider(),
               const SizedBox(height: 10),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              Wrap(
+                spacing: 10,
                 children: [
                   //sector display
-                  Row(
-                    children: [
-                      const Icon(
-                        Icons.category,
-                        size: 20,
-                        color: Colors.green,
-                      ),
-                      const SizedBox(width: 5),
-                      SelectableText(
-                        ' ${job.sector}',
-                        style: Theme.of(context)
-                            .textTheme
-                            .labelLarge, // Adjust font size here
-                      ),
-                    ],
+                  Chip(
+                    label: SelectableText(
+                      widget.job.sector!,
+                      style: Theme.of(context)
+                          .textTheme
+                          .labelMedium, // Adjust font size here
+                    ),
                   ),
-
-                  //duration display
-                  Row(
-                    children: [
-                      const Icon(
-                        Icons.timer,
-                        size: 20,
-                        color: Colors.green,
-                      ),
-                      const SizedBox(width: 5),
-                      SelectableText(
-                        ' ${job.duration}',
-                        style: Theme.of(context)
-                            .textTheme
-                            .labelLarge, // Adjust font size here
-                      ),
-                    ],
+                  // duration display
+                  Chip(
+                    label: SelectableText(
+                      widget.job.duration == JobDuration.short_term
+                          ? 'Short-Term'
+                          : 'Long-term',
+                      style: Theme.of(context)
+                          .textTheme
+                          .labelMedium, // Adjust font size here
+                    ),
                   ),
-
-                  //salary display
-                  Row(
-                    children: [
-                      const Icon(
-                        Icons.attach_money,
-                        size: 20,
-                        color: Colors.green,
-                      ),
-                      const SizedBox(width: 5),
-                      SelectableText(
-                        '${job.salary}',
-                        style: Theme.of(context)
-                            .textTheme
-                            .labelLarge, // Adjust font size here
-                      ),
-                    ],
+                  // salary display
+                  Chip(
+                    label: SelectableText(
+                      'RM ${widget.job.salary}/${widget.job.rate}',
+                      style: Theme.of(context)
+                          .textTheme
+                          .labelMedium, // Adjust font size here
+                    ),
+                  ),
+                  // start_date to end_date display
+                  Chip(
+                    label: SelectableText(
+                      '${DateFormat('dd-MMMM-yyyy').format(widget.job.startDate!)} to ${DateFormat('dd-MMMM-yyyy').format(widget.job.startDate!)}',
+                      style: Theme.of(context)
+                          .textTheme
+                          .labelMedium, // Adjust font size here
+                    ),
                   ),
                 ],
               ),
@@ -186,7 +166,7 @@ class mySquare extends StatelessWidget {
                 child: Center(
                   // Wrap job description with Center widget
                   child: SelectableText(
-                    job.description,
+                    widget.job.description!,
                     style:
                         const TextStyle(fontSize: 16), // Adjust font size here
                   ),
@@ -207,7 +187,7 @@ class mySquare extends StatelessWidget {
                       ),
                       SizedBox(width: 5),
                       SelectableText(
-                        '2 Days ago',
+                        '${(widget.job.createdAt!.toUtc().difference(DateTime.now().toUtc()).inDays)} days ago',
                         style: TextStyle(fontSize: 20),
                       ),
                     ],
@@ -222,8 +202,9 @@ class mySquare extends StatelessWidget {
                           size: 28,
                           color: Colors.green,
                         ),
-                        onPressed: () {
-                          // Add your onPressed functionality here
+                        onPressed: () async {
+                          await launchUrlString(
+                              'mailto:${widget.job.company!.representativeEmail}');
                         },
                       ),
                       SizedBox(width: 5),
@@ -233,8 +214,9 @@ class mySquare extends StatelessWidget {
                           size: 28,
                           color: Colors.green,
                         ),
-                        onPressed: () {
-                          // Add your onPressed functionality here
+                        onPressed: () async {
+                          await launchUrlString(
+                              'phone:${widget.job.company!.representativePhone}');
                         },
                       ),
                       SizedBox(width: 5),
