@@ -1,16 +1,17 @@
 // ignore: file_names
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:greenjobs/square.dart';
 import 'constants.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 
-// ignore: camel_case_types
-class mobileScafford extends StatefulWidget {
-  const mobileScafford({super.key});
+class MobileScafford extends StatefulWidget {
+  const MobileScafford({super.key});
 
   @override
-  State<mobileScafford> createState() => _mobileScaffordState();
+  State<MobileScafford> createState() => _MobileScaffordState();
 }
 
 class Job {
@@ -35,8 +36,7 @@ class Job {
   });
 }
 
-// ignore: camel_case_types
-class _mobileScaffordState extends State<mobileScafford> {
+class _MobileScaffordState extends State<MobileScafford> {
   final List<Job> list = [
     Job(
       image: 'lib/image/desa.jpg',
@@ -81,198 +81,315 @@ class _mobileScaffordState extends State<mobileScafford> {
         backgroundColor: myDefaultBackground,
         drawer: myDrawer,
         body: SingleChildScrollView(
-          child: Column(
-            children: [
-              ListView.builder(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemCount: list.length,
-                  itemBuilder: (context, index) {
-                    return mySquare(
-                      job: list[index],
-                    );
-                  }),
-// Footer
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 8.0, horizontal: 30.0),
-                child: Card(
-                  child: Column(
-                    children: [
-                      //ROW 1
-                      Container(
-                        color: Colors.green,
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Row(
-                            children: [
-                              const SizedBox(width: 5),
-                              Expanded(
-                                child: Center(
-                                  child: SelectableText('ARE YOU HIRING?',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .labelLarge
-                                          ?.copyWith(
-                                              fontWeight: FontWeight.bold)),
-                                ),
-                              ),
-                              Expanded(
-                                child: Center(
-                                    child: SignInButtonBuilder(
-                                  text: 'Apply Now',
-                                  textColor: Colors.white,
-                                  onPressed: () {},
-                                  backgroundColor: Colors.black,
-                                )),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-
-                      const SizedBox(height: 10),
-                      //Row 2
-                      Row(
-                        children: [
-                          const SizedBox(width: 5),
-                          Expanded(
-                            child: Center(
-                              child: RichText(
-                                textAlign: TextAlign.center,
-                                text: TextSpan(
-                                  style: Theme.of(context).textTheme.labelLarge,
-                                  children: [
-                                    TextSpan(
-                                      text: 'Job Seeker',
-                                      recognizer: TapGestureRecognizer()
-                                        ..onTap = () {
-                                          // Add your onTap functionality here
-                                        },
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                          const SizedBox(width: 5),
-                          Expanded(
-                            child: Center(
-                              child: RichText(
-                                textAlign: TextAlign.center,
-                                text: TextSpan(
-                                  style: Theme.of(context).textTheme.labelLarge,
-                                  children: [
-                                    TextSpan(
-                                      text: 'About Us',
-                                      recognizer: TapGestureRecognizer()
-                                        ..onTap = () {
-                                          // Add your onTap functionality here
-                                        },
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-
-                      //Row 3
-                      Row(
-                        children: [
-                          const SizedBox(width: 5),
-                          Expanded(
-                            child: Center(
-                              child: RichText(
-                                textAlign: TextAlign.center,
-                                text: TextSpan(
-                                  style: Theme.of(context).textTheme.labelLarge,
-                                  children: [
-                                    TextSpan(
-                                      text: 'Employer',
-                                      recognizer: TapGestureRecognizer()
-                                        ..onTap = () {
-                                          // Add your onTap functionality here
-                                        },
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                          const SizedBox(width: 5),
-                          Expanded(
-                            child: Center(
-                              child: RichText(
-                                textAlign: TextAlign.center,
-                                text: TextSpan(
-                                  style: Theme.of(context).textTheme.labelLarge,
-                                  children: [
-                                    TextSpan(
-                                      text: 'Send Feedback',
-                                      recognizer: TapGestureRecognizer()
-                                        ..onTap = () {
-                                          // Add your onTap functionality here
-                                        },
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-
-                      // 5 icons at the bottom
-                      Center(
+            child: Column(children: [
+          //header
+          Padding(
+              padding:
+                  const EdgeInsets.symmetric(vertical: 8.0, horizontal: 0.0),
+              child: Card(
+                child: Column(
+                  children: [
+                    //ROW 1
+                    Container(
+                      color: Colors.green,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            IconButton(
-                              icon: Icon(
-                                Icons.mail,
-                                size: 30,
-                                color: Colors.green,
+                            const SizedBox(width: 5),
+                            Expanded(
+                              child: Center(
+                                child: SelectableText(
+                                    'Gateaway to Curtural Experiences:\nFind Your Working Holiday Adventure!',
+                                    textAlign: TextAlign.center,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .labelLarge
+                                        ?.copyWith(
+                                            fontWeight: FontWeight.bold)),
                               ),
-                              onPressed: () {
-                                // Add your mail functionality here
-                              },
-                            ),
-                            IconButton(
-                              icon: Icon(
-                                Icons.call,
-                                size: 30,
-                                color: Colors.green,
-                              ),
-                              onPressed: () {
-                                // Add your call functionality here
-                              },
-                            ),
-                            SignInButton(
-                              Buttons.LinkedIn,
-                              mini: true,
-                              onPressed: () {},
-                            ),
-                            SignInButton(
-                              Buttons.Facebook,
-                              mini: true,
-                              onPressed: () {},
-                            ),
-                            SignInButton(
-                              Buttons.Twitter,
-                              mini: true,
-                              onPressed: () {},
                             ),
                           ],
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+
+                    //job search bar
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        child: TextField(
+                          decoration: InputDecoration(
+                            prefixIcon: Icon(Icons.search), // Icon to be added
+                            hintText: 'Job Title or Keyword',
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    //location search bar
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        child: TextField(
+                          decoration: InputDecoration(
+                            prefixIcon:
+                                Icon(Icons.location_on), // Icon to be added
+                            hintText: 'Location',
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    //sector, duration and salary
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: TextField(
+                              decoration: InputDecoration(
+                                hintText: 'Sector',
+                                prefixIcon: Icon(Icons.business),
+                              ),
+                              onTap: () {
+                                // Add your onTap functionality here
+                              },
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: TextField(
+                              decoration: InputDecoration(
+                                hintText: 'Duration',
+                                prefixIcon: Icon(Icons.timer),
+                              ),
+                              onTap: () {
+                                // Add your onTap functionality here
+                              },
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: TextField(
+                              decoration: InputDecoration(
+                                hintText: 'Salary',
+                                prefixIcon: Icon(Icons.attach_money),
+                              ),
+                              onTap: () {
+                                // Add your onTap functionality here
+                              },
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+
+                    ListView.builder(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: list.length,
+                        itemBuilder: (context, index) {
+                          return mySquare(
+                            job: list[index],
+                          );
+                        }),
+
+                    // Footer
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 8.0, horizontal: 0.0),
+                      child: Card(
+                        child: Column(
+                          children: [
+                            //ROW 1
+                            Container(
+                              color: Colors.green,
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Row(
+                                  children: [
+                                    const SizedBox(width: 5),
+                                    Expanded(
+                                      child: Center(
+                                        child: SelectableText('ARE YOU HIRING?',
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .labelLarge
+                                                ?.copyWith(
+                                                    fontWeight:
+                                                        FontWeight.bold)),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: Center(
+                                          child: SignInButtonBuilder(
+                                        text: 'Apply Now',
+                                        textColor: Colors.white,
+                                        onPressed: () {},
+                                        backgroundColor: Colors.black,
+                                      )),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+
+                            const SizedBox(height: 10),
+                            //Row 2
+                            Row(
+                              children: [
+                                const SizedBox(width: 5),
+                                Expanded(
+                                  child: Center(
+                                    child: RichText(
+                                      textAlign: TextAlign.center,
+                                      text: TextSpan(
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .labelLarge,
+                                        children: [
+                                          TextSpan(
+                                            text: 'Job Seeker',
+                                            recognizer: TapGestureRecognizer()
+                                              ..onTap = () {
+                                                // Add your onTap functionality here
+                                              },
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(width: 5),
+                                Expanded(
+                                  child: Center(
+                                    child: RichText(
+                                      textAlign: TextAlign.center,
+                                      text: TextSpan(
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .labelLarge,
+                                        children: [
+                                          TextSpan(
+                                            text: 'About Us',
+                                            recognizer: TapGestureRecognizer()
+                                              ..onTap = () {
+                                                // Add your onTap functionality here
+                                              },
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+
+                            //Row 3
+                            Row(
+                              children: [
+                                const SizedBox(width: 5),
+                                Expanded(
+                                  child: Center(
+                                    child: RichText(
+                                      textAlign: TextAlign.center,
+                                      text: TextSpan(
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .labelLarge,
+                                        children: [
+                                          TextSpan(
+                                            text: 'Employer',
+                                            recognizer: TapGestureRecognizer()
+                                              ..onTap = () {
+                                                // Add your onTap functionality here
+                                              },
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(width: 5),
+                                Expanded(
+                                  child: Center(
+                                    child: RichText(
+                                      textAlign: TextAlign.center,
+                                      text: TextSpan(
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .labelLarge,
+                                        children: [
+                                          TextSpan(
+                                            text: 'Send Feedback',
+                                            recognizer: TapGestureRecognizer()
+                                              ..onTap = () {
+                                                // Add your onTap functionality here
+                                              },
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+
+                            // 5 icons at the bottom
+                            Center(
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  IconButton(
+                                    icon: Icon(
+                                      Icons.mail,
+                                      size: 30,
+                                      color: Colors.green,
+                                    ),
+                                    onPressed: () {
+                                      // Add your mail functionality here
+                                    },
+                                  ),
+                                  IconButton(
+                                    icon: Icon(
+                                      Icons.call,
+                                      size: 30,
+                                      color: Colors.green,
+                                    ),
+                                    onPressed: () {
+                                      // Add your call functionality here
+                                    },
+                                  ),
+                                  SignInButton(
+                                    Buttons.LinkedIn,
+                                    mini: true,
+                                    onPressed: () {},
+                                  ),
+                                  SignInButton(
+                                    Buttons.Facebook,
+                                    mini: true,
+                                    onPressed: () {},
+                                  ),
+                                  SignInButton(
+                                    Buttons.Twitter,
+                                    mini: true,
+                                    onPressed: () {},
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-            ],
-          ),
-        ));
+              ))
+        ])));
   }
 }

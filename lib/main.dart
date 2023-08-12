@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(useMaterial3: true),
       debugShowCheckedModeBanner: false,
       home: responsiveLayout(
-        mobileScaffold: const mobileScafford(),
+        mobileScaffold: const MobileScafford(),
       ),
     );
   }

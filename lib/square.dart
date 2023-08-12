@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, body_might_complete_normally_nullable
 
 import 'package:flutter/material.dart';
 import 'package:greenjobs/responsive/mobileScaffold.dart';
@@ -16,7 +16,7 @@ class mySquare extends StatelessWidget {
       child: Container(
         height: 400, // Increased the container height to accommodate the footer
         decoration: BoxDecoration(
-          color: Colors.grey[100],
+          color: Colors.grey[200],
           borderRadius: BorderRadius.circular(20),
         ),
         child: Column(
