@@ -91,7 +91,7 @@ class _MobileScaffordState extends State<MobileScafford> {
                   children: [
                     //ROW 1
                     Container(
-                      color: Colors.green,
+                      //color: Colors.green,
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Row(
@@ -189,6 +189,22 @@ class _MobileScaffordState extends State<MobileScafford> {
                       ],
                     ),
 
+                    // Number of jobs text
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          '${list.length} Found jobs out of ${list.length + 12}',
+                          style: TextStyle(
+                            fontSize: 10,
+                            //fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    //body
                     ListView.builder(
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 //background colour declaration
-var myDefaultBackground = Colors.white;
+var myDefaultBackground = Colors.blueGrey;
 
 //appbar or dashboard colour
 var myAppBar = AppBar(
-  backgroundColor: Colors.deepPurple,
+  backgroundColor: Colors.white,
   centerTitle: true,
   title: const SelectableText(
     'GreenJobs', // Replace this with your desired text
@@ -16,7 +16,7 @@ var myAppBar = AppBar(
     IconButton(
       icon: const Icon(
         Icons.person,
-        color: Colors.white,
+        color: Colors.black,
       ),
       onPressed: () {
         // do something
