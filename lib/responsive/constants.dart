@@ -9,7 +9,7 @@ var myAppBar = AppBar(
   centerTitle: true,
   title: const SelectableText(
     'GreenJobs', // Replace this with your desired text
-    style: TextStyle(fontSize: 30, color: Colors.green),
+    style: TextStyle(fontSize: 40, color: Colors.green),
   ),
   //create 'login' button on the right side
   actions: <Widget>[

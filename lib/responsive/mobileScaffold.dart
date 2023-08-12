@@ -99,15 +99,14 @@ class _MobileScaffordState extends State<MobileScafford> {
                             const SizedBox(width: 5),
                             Expanded(
                               child: Center(
-                                child: SelectableText(
-                                    'Gateaway to Curtural Experiences:\nFind Your Working Holiday Adventure!',
-                                    textAlign: TextAlign.center,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .labelLarge
-                                        ?.copyWith(
-                                            fontWeight: FontWeight.bold)),
-                              ),
+                                  child: SelectableText(
+                                      'Gateaway to Curtural Experiences:\nFind Your Working Holiday Adventure!',
+                                      textAlign: TextAlign.center,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .titleLarge
+                                          ?.copyWith(
+                                              fontWeight: FontWeight.bold))),
                             ),
                           ],
                         ),
@@ -224,7 +223,7 @@ class _MobileScaffordState extends State<MobileScafford> {
                           children: [
                             //ROW 1
                             Container(
-                              color: Colors.green,
+                              color: Colors.greenAccent,
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Row(
@@ -232,23 +231,28 @@ class _MobileScaffordState extends State<MobileScafford> {
                                     const SizedBox(width: 5),
                                     Expanded(
                                       child: Center(
-                                        child: SelectableText('ARE YOU HIRING?',
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .labelLarge
-                                                ?.copyWith(
-                                                    fontWeight:
-                                                        FontWeight.bold)),
-                                      ),
+                                          child: SelectableText(
+                                              'ARE YOU HIRING?',
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .labelLarge
+                                                  ?.copyWith(
+                                                      fontWeight:
+                                                          FontWeight.bold))),
                                     ),
                                     Expanded(
                                       child: Center(
+                                        child: ClipRRect(
+                                          borderRadius: BorderRadius.circular(
+                                              20), // Adjust the radius as needed
                                           child: SignInButtonBuilder(
-                                        text: 'Apply Now',
-                                        textColor: Colors.white,
-                                        onPressed: () {},
-                                        backgroundColor: Colors.black,
-                                      )),
+                                            text: 'Apply Now',
+                                            textColor: Colors.white,
+                                            onPressed: () {},
+                                            backgroundColor: Colors.black,
+                                          ),
+                                        ),
+                                      ),
                                     ),
                                   ],
                                 ),
