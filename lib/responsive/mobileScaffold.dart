@@ -1,4 +1,5 @@
 // ignore: file_names
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:greenjobs/square.dart';
 import 'constants.dart';
@@ -99,7 +100,6 @@ class _mobileScaffordState extends State<mobileScafford> {
                   child: Column(
                     children: [
                       //ROW 1
-
                       Container(
                         color: Colors.green,
                         child: Padding(
@@ -132,68 +132,122 @@ class _mobileScaffordState extends State<mobileScafford> {
                       ),
 
                       const SizedBox(height: 10),
-                      // Center and expand the row
+                      //Row 2
                       Row(
                         children: [
                           const SizedBox(width: 5),
                           Expanded(
                             child: Center(
-                              child: SelectableText(
-                                'Job Seeker',
-                                style: Theme.of(context).textTheme.labelLarge,
+                              child: RichText(
+                                textAlign: TextAlign.center,
+                                text: TextSpan(
+                                  style: Theme.of(context).textTheme.labelLarge,
+                                  children: [
+                                    TextSpan(
+                                      text: 'Job Seeker',
+                                      recognizer: TapGestureRecognizer()
+                                        ..onTap = () {
+                                          // Add your onTap functionality here
+                                        },
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
                           const SizedBox(width: 5),
                           Expanded(
                             child: Center(
-                              child: SelectableText(
-                                'About Us',
-                                style: Theme.of(context).textTheme.labelLarge,
+                              child: RichText(
+                                textAlign: TextAlign.center,
+                                text: TextSpan(
+                                  style: Theme.of(context).textTheme.labelLarge,
+                                  children: [
+                                    TextSpan(
+                                      text: 'About Us',
+                                      recognizer: TapGestureRecognizer()
+                                        ..onTap = () {
+                                          // Add your onTap functionality here
+                                        },
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
                         ],
                       ),
 
+                      //Row 3
                       Row(
                         children: [
                           const SizedBox(width: 5),
                           Expanded(
                             child: Center(
-                              child: SelectableText(
-                                'Employer',
-                                style: Theme.of(context).textTheme.labelLarge,
+                              child: RichText(
+                                textAlign: TextAlign.center,
+                                text: TextSpan(
+                                  style: Theme.of(context).textTheme.labelLarge,
+                                  children: [
+                                    TextSpan(
+                                      text: 'Employer',
+                                      recognizer: TapGestureRecognizer()
+                                        ..onTap = () {
+                                          // Add your onTap functionality here
+                                        },
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
                           const SizedBox(width: 5),
                           Expanded(
                             child: Center(
-                              child: SelectableText(
-                                'Feedback',
-                                style: Theme.of(context).textTheme.labelLarge,
+                              child: RichText(
+                                textAlign: TextAlign.center,
+                                text: TextSpan(
+                                  style: Theme.of(context).textTheme.labelLarge,
+                                  children: [
+                                    TextSpan(
+                                      text: 'Send Feedback',
+                                      recognizer: TapGestureRecognizer()
+                                        ..onTap = () {
+                                          // Add your onTap functionality here
+                                        },
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
                         ],
                       ),
 
-                      // 5 icons below
+                      // 5 icons at the bottom
                       Center(
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment
-                              .center, // Center the icons horizontally
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            const Icon(
-                              Icons.mail,
-                              size: 30,
-                              color: Colors.green,
+                            IconButton(
+                              icon: Icon(
+                                Icons.mail,
+                                size: 30,
+                                color: Colors.green,
+                              ),
+                              onPressed: () {
+                                // Add your mail functionality here
+                              },
                             ),
-                            const Icon(
-                              Icons.call,
-                              size: 30,
-                              color: Colors.green,
+                            IconButton(
+                              icon: Icon(
+                                Icons.call,
+                                size: 30,
+                                color: Colors.green,
+                              ),
+                              onPressed: () {
+                                // Add your call functionality here
+                              },
                             ),
                             SignInButton(
                               Buttons.LinkedIn,

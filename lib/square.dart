@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+
 import 'package:flutter/material.dart';
 import 'package:greenjobs/responsive/mobileScaffold.dart';
 
@@ -38,6 +40,7 @@ class mySquare extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment
                             .spaceBetween, // Align icon to the right
                         children: [
+                          //title display
                           Flexible(
                             child: SelectableText(
                               job.title,
@@ -46,13 +49,19 @@ class mySquare extends StatelessWidget {
                                   .titleLarge, // Adjust font size here
                             ),
                           ),
-                          const Icon(
-                            Icons.bookmark,
-                            size: 42,
-                            color: Colors.green,
+                          IconButton(
+                            icon: Icon(
+                              Icons.bookmark,
+                              size: 42,
+                              color: Colors.green,
+                            ),
+                            onPressed: () {
+                              // Add your onPressed functionality here
+                            },
                           ),
                         ],
                       ),
+                      //area display
                       const SizedBox(height: 5),
                       Row(
                         children: [
@@ -70,6 +79,8 @@ class mySquare extends StatelessWidget {
                         ],
                       ),
                       const SizedBox(height: 5),
+
+                      //location display
                       Row(
                         children: [
                           const Icon(
@@ -96,6 +107,7 @@ class mySquare extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                //sector display
                 Row(
                   children: [
                     const Icon(
@@ -112,6 +124,8 @@ class mySquare extends StatelessWidget {
                     ),
                   ],
                 ),
+
+                //duration display
                 Row(
                   children: [
                     const Icon(
@@ -128,6 +142,8 @@ class mySquare extends StatelessWidget {
                     ),
                   ],
                 ),
+
+                //salary display
                 Row(
                   children: [
                     const Icon(
@@ -146,6 +162,8 @@ class mySquare extends StatelessWidget {
                 ),
               ],
             ),
+
+            //description
             const SizedBox(height: 15),
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -158,10 +176,11 @@ class mySquare extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 10),
-            const Row(
+            Row(
               mainAxisAlignment:
                   MainAxisAlignment.spaceBetween, // Align icons and text
               children: [
+                //date published
                 Row(
                   children: [
                     Icon(
@@ -170,38 +189,50 @@ class mySquare extends StatelessWidget {
                       color: Colors.green,
                     ),
                     SizedBox(width: 5),
-                    // SelectableText(
-                    //   'Date Posted:',
-                    //   style: TextStyle(fontSize: 14),
-                    // ),
-                    SizedBox(width: 5),
                     SelectableText(
                       '2 Days ago',
                       style: TextStyle(fontSize: 20),
                     ),
                   ],
                 ),
+
+                //contact button
                 Row(
                   children: [
-                    Icon(
-                      Icons.mail,
-                      size: 28,
-                      color: Colors.green,
+                    IconButton(
+                      icon: Icon(
+                        Icons.mail,
+                        size: 28,
+                        color: Colors.green,
+                      ),
+                      onPressed: () {
+                        // Add your onPressed functionality here
+                      },
                     ),
                     SizedBox(width: 5),
-                    Icon(
-                      Icons.call,
-                      size: 28,
-                      color: Colors.green,
+                    IconButton(
+                      icon: Icon(
+                        Icons.call,
+                        size: 28,
+                        color: Colors.green,
+                      ),
+                      onPressed: () {
+                        // Add your onPressed functionality here
+                      },
                     ),
                     SizedBox(width: 5),
-                    Icon(
-                      Icons.next_week,
-                      size: 28,
-                      color: Colors.green,
+                    IconButton(
+                      icon: Icon(
+                        Icons.next_week,
+                        size: 28,
+                        color: Colors.green,
+                      ),
+                      onPressed: () {
+                        // Add your onPressed functionality here
+                      },
                     ),
                   ],
-                ),
+                )
               ],
             ),
           ],
