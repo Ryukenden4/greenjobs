@@ -78,30 +78,38 @@ class _mobileScaffordState extends State<mobileScafford> {
         appBar: myAppBar,
         backgroundColor: myDefaultBackground,
         drawer: myDrawer,
-        body: Column(
-          children: [
-            Expanded(
-              child: ListView.builder(
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              ListView.builder(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
                   itemCount: list.length,
                   itemBuilder: (context, index) {
                     return mySquare(
                       job: list[index],
                     );
                   }),
-            ),
-            //footer
-            Row(
-              children: [
-                Column(
-                  children: [
-                    Row(
-                      children: [Text('ARE YOU HIRING?!')],
-                    )
-                  ],
-                )
-              ],
-            )
-          ],
+              //footer
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 8.0, horizontal: 30.0),
+                child: Card(
+                  child: Column(
+                    children: [
+                      Row(children: [
+                        const Text('ARE YOU HIRING?!'),
+                        ElevatedButton.icon(
+                            onPressed: () {},
+                            icon: Icon(Icons.abc),
+                            label: Text('hi'))
+                      ])
+                    ],
+                  ),
+                ),
+              )
+            ],
+          ),
         ));
   }
 }
