@@ -39,7 +39,7 @@ class mySquare extends StatelessWidget {
                             .spaceBetween, // Align icon to the right
                         children: [
                           Flexible(
-                            child: Text(
+                            child: SelectableText(
                               job.title,
                               style: Theme.of(context)
                                   .textTheme
@@ -48,7 +48,7 @@ class mySquare extends StatelessWidget {
                           ),
                           const Icon(
                             Icons.bookmark,
-                            size: 50,
+                            size: 42,
                             color: Colors.green,
                           ),
                         ],
@@ -61,7 +61,7 @@ class mySquare extends StatelessWidget {
                             color: Colors.green,
                           ),
                           const SizedBox(width: 5),
-                          Text(
+                          SelectableText(
                             job.area,
                             style: Theme.of(context)
                                 .textTheme
@@ -78,7 +78,7 @@ class mySquare extends StatelessWidget {
                           ),
                           const SizedBox(width: 5),
                           Flexible(
-                            child: Text(
+                            child: SelectableText(
                               job.location,
                               style: Theme.of(context)
                                   .textTheme
@@ -100,11 +100,11 @@ class mySquare extends StatelessWidget {
                   children: [
                     const Icon(
                       Icons.category,
-                      size: 30,
+                      size: 20,
                       color: Colors.green,
                     ),
                     const SizedBox(width: 5),
-                    Text(
+                    SelectableText(
                       ' ${job.sector}',
                       style: Theme.of(context)
                           .textTheme
@@ -116,11 +116,11 @@ class mySquare extends StatelessWidget {
                   children: [
                     const Icon(
                       Icons.timer,
-                      size: 30,
+                      size: 20,
                       color: Colors.green,
                     ),
                     const SizedBox(width: 5),
-                    Text(
+                    SelectableText(
                       ' ${job.duration}',
                       style: Theme.of(context)
                           .textTheme
@@ -132,11 +132,11 @@ class mySquare extends StatelessWidget {
                   children: [
                     const Icon(
                       Icons.attach_money,
-                      size: 30,
+                      size: 20,
                       color: Colors.green,
                     ),
                     const SizedBox(width: 5),
-                    Text(
+                    SelectableText(
                       '${job.salary}',
                       style: Theme.of(context)
                           .textTheme
@@ -147,11 +147,14 @@ class mySquare extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 15),
-            Center(
-              // Wrap job description with Center widget
-              child: Text(
-                job.description,
-                style: const TextStyle(fontSize: 16), // Adjust font size here
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Center(
+                // Wrap job description with Center widget
+                child: SelectableText(
+                  job.description,
+                  style: const TextStyle(fontSize: 16), // Adjust font size here
+                ),
               ),
             ),
             const SizedBox(height: 10),
@@ -163,16 +166,16 @@ class mySquare extends StatelessWidget {
                   children: [
                     Icon(
                       Icons.calendar_today,
-                      size: 30,
+                      size: 28,
                       color: Colors.green,
                     ),
                     SizedBox(width: 5),
-                    // Text(
+                    // SelectableText(
                     //   'Date Posted:',
                     //   style: TextStyle(fontSize: 14),
                     // ),
                     SizedBox(width: 5),
-                    Text(
+                    SelectableText(
                       '2 Days ago',
                       style: TextStyle(fontSize: 20),
                     ),
@@ -182,19 +185,19 @@ class mySquare extends StatelessWidget {
                   children: [
                     Icon(
                       Icons.mail,
-                      size: 50,
+                      size: 28,
                       color: Colors.green,
                     ),
                     SizedBox(width: 5),
                     Icon(
                       Icons.call,
-                      size: 50,
+                      size: 28,
                       color: Colors.green,
                     ),
                     SizedBox(width: 5),
                     Icon(
                       Icons.next_week,
-                      size: 50,
+                      size: 28,
                       color: Colors.green,
                     ),
                   ],

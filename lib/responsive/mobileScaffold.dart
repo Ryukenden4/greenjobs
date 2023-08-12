@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:greenjobs/square.dart';
 import 'constants.dart';
+import 'package:flutter_signin_button/flutter_signin_button.dart';
 
 // ignore: camel_case_types
 class mobileScafford extends StatefulWidget {
@@ -90,24 +91,132 @@ class _mobileScaffordState extends State<mobileScafford> {
                       job: list[index],
                     );
                   }),
-              //footer
+// Footer
               Padding(
                 padding:
                     const EdgeInsets.symmetric(vertical: 8.0, horizontal: 30.0),
                 child: Card(
                   child: Column(
                     children: [
-                      Row(children: [
-                        const Text('ARE YOU HIRING?!'),
-                        ElevatedButton.icon(
-                            onPressed: () {},
-                            icon: Icon(Icons.abc),
-                            label: Text('hi'))
-                      ])
+                      //ROW 1
+
+                      Container(
+                        color: Colors.green,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            children: [
+                              const SizedBox(width: 5),
+                              Expanded(
+                                child: Center(
+                                  child: SelectableText('ARE YOU HIRING?',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .labelLarge
+                                          ?.copyWith(
+                                              fontWeight: FontWeight.bold)),
+                                ),
+                              ),
+                              Expanded(
+                                child: Center(
+                                    child: SignInButtonBuilder(
+                                  text: 'Apply Now',
+                                  textColor: Colors.white,
+                                  onPressed: () {},
+                                  backgroundColor: Colors.black,
+                                )),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+
+                      const SizedBox(height: 10),
+                      // Center and expand the row
+                      Row(
+                        children: [
+                          const SizedBox(width: 5),
+                          Expanded(
+                            child: Center(
+                              child: SelectableText(
+                                'Job Seeker',
+                                style: Theme.of(context).textTheme.labelLarge,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(width: 5),
+                          Expanded(
+                            child: Center(
+                              child: SelectableText(
+                                'About Us',
+                                style: Theme.of(context).textTheme.labelLarge,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+
+                      Row(
+                        children: [
+                          const SizedBox(width: 5),
+                          Expanded(
+                            child: Center(
+                              child: SelectableText(
+                                'Employer',
+                                style: Theme.of(context).textTheme.labelLarge,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(width: 5),
+                          Expanded(
+                            child: Center(
+                              child: SelectableText(
+                                'Feedback',
+                                style: Theme.of(context).textTheme.labelLarge,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+
+                      // 5 icons below
+                      Center(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment
+                              .center, // Center the icons horizontally
+                          children: [
+                            const Icon(
+                              Icons.mail,
+                              size: 30,
+                              color: Colors.green,
+                            ),
+                            const Icon(
+                              Icons.call,
+                              size: 30,
+                              color: Colors.green,
+                            ),
+                            SignInButton(
+                              Buttons.LinkedIn,
+                              mini: true,
+                              onPressed: () {},
+                            ),
+                            SignInButton(
+                              Buttons.Facebook,
+                              mini: true,
+                              onPressed: () {},
+                            ),
+                            SignInButton(
+                              Buttons.Twitter,
+                              mini: true,
+                              onPressed: () {},
+                            ),
+                          ],
+                        ),
+                      ),
                     ],
                   ),
                 ),
-              )
+              ),
             ],
           ),
         ));

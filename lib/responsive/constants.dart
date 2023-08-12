@@ -7,7 +7,7 @@ var myDefaultBackground = Colors.white;
 var myAppBar = AppBar(
   backgroundColor: Colors.deepPurple,
   centerTitle: true,
-  title: const Text(
+  title: const SelectableText(
     'GreenJobs', // Replace this with your desired text
     style: TextStyle(fontSize: 30, color: Colors.green),
   ),
@@ -31,15 +31,16 @@ var myDrawer = const Drawer(
   //what's inside it
   child: Column(children: [
     DrawerHeader(
-        child: Text(
+        child: SelectableText(
       'GreenJobs',
       style: TextStyle(fontSize: 35),
     )),
-    ListTile(leading: Icon(Icons.work), title: Text('Jobs')),
+    ListTile(leading: Icon(Icons.work), title: SelectableText('Jobs')),
     ListTile(
       leading: Icon(Icons.store),
-      title: Text('Companies'),
+      title: SelectableText('Companies'),
     ),
-    ListTile(leading: Icon(Icons.groups), title: Text('For Employer')),
+    ListTile(
+        leading: Icon(Icons.groups), title: SelectableText('For Employer')),
   ]),
 );
