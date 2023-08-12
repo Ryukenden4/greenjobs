@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:greenjobs/responsive/mobileScaffold.dart';
+import 'package:like_button/like_button.dart';
 
 class mySquare extends StatelessWidget {
   final Job job;
@@ -49,15 +50,12 @@ class mySquare extends StatelessWidget {
                                   .titleLarge, // Adjust font size here
                             ),
                           ),
-                          IconButton(
-                            icon: Icon(
-                              Icons.bookmark,
-                              size: 42,
-                              color: Colors.green,
-                            ),
-                            onPressed: () {
-                              // Add your onPressed functionality here
+                          LikeButton(
+                            size: 42,
+                            likeBuilder: (isLiked) {
+                              Icons.bookmark;
                             },
+                            //color: Colors.green,
                           ),
                         ],
                       ),
