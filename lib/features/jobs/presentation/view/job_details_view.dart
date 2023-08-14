@@ -62,7 +62,7 @@ class _JobDetailsViewState extends ConsumerState<JobDetailsView> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Image.network(
-                                '',
+                                job.imageUrls.firstOrNull ?? '',
                                 width: 120,
                                 height: 120,
                                 fit: BoxFit.cover,

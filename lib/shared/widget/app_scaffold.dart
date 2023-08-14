@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:greenjobs/routes/routes.dart';
 import 'package:greenjobs/shared/widget/app_drawer.dart';
 
 import '../../features/authentication/data/repositories/authentication_repository_impl.dart';
@@ -27,7 +28,7 @@ class _AppScaffoldState extends ConsumerState<AppScaffold> {
 
   @override
   Widget build(BuildContext context) {
-    final authStatus = ref.watch(authenticationRepositoryImplProvider.future);
+    final authStatus = ref.watch(authenticationRepositoryImplProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -84,20 +85,46 @@ class _AppScaffoldState extends ConsumerState<AppScaffold> {
                                 //   ),
                                 //   onTap: () {},
                                 // ),
-                                TextButton(
-                                    onPressed: () async {
-                                      await _authenticationRepository.logOut();
+                                authStatus.when(
+                                    data: (data) {
+                                      if (data ==
+                                          AuthenticationStatus.authenticated) {
+                                        return TextButton(
+                                            onPressed: () async {
+                                              await _authenticationRepository
+                                                  .logOut();
+                                            },
+                                            child: authStatus ==
+                                                    AuthenticationStatus.loading
+                                                ? const CircularProgressIndicator()
+                                                : Text(
+                                                    'Logout',
+                                                    style: TextStyle(
+                                                        color: Theme.of(context)
+                                                            .colorScheme
+                                                            .error),
+                                                  ));
+                                      }
+                                      return TextButton(
+                                          onPressed: () {
+                                            const LoginRoute().go(context);
+                                          },
+                                          child: data ==
+                                                  AuthenticationStatus.loading
+                                              ? const CircularProgressIndicator()
+                                              : const Text(
+                                                  'Login',
+                                                ));
                                     },
-                                    child: authStatus ==
-                                            AuthenticationStatus.loading
-                                        ? const CircularProgressIndicator()
-                                        : Text(
-                                            'Logout',
-                                            style: TextStyle(
-                                                color: Theme.of(context)
-                                                    .colorScheme
-                                                    .error),
-                                          ))
+                                    error: (error, _) => TextButton(
+                                        onPressed: () {
+                                          const LoginRoute().go(context);
+                                        },
+                                        child: const Text(
+                                          'Login',
+                                        )),
+                                    loading: () =>
+                                        const CircularProgressIndicator())
                               ],
                             ),
                           ),

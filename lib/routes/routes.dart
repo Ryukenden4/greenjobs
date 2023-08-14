@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:greenjobs/features/authentication/presentation/view/signup_view.dart';
+import 'package:greenjobs/features/for_employers/presentation/views/for_employers_view.dart';
 import 'package:greenjobs/features/jobs/presentation/view/job_details_view.dart';
 import 'package:greenjobs/features/jobs/presentation/view/jobs_view.dart';
 import 'package:greenjobs/features/jobs/presentation/view/jobs_view.dart';
@@ -74,6 +75,7 @@ class RootRoute extends GoRouteData {
       TypedGoRoute<JobsRoute>(path: JobsRoute.path, routes: [
         TypedGoRoute<JobDetailsRoute>(path: JobDetailsRoute.path),
       ]),
+      TypedGoRoute<ForEmployersRoute>(path: ForEmployersRoute.path),
     ])
   ],
 )
@@ -131,5 +133,15 @@ class JobDetailsRoute extends GoRouteData {
   @override
   Widget build(BuildContext context, GoRouterState state) {
     return JobDetailsView(jobId: jobId);
+  }
+}
+
+class ForEmployersRoute extends GoRouteData {
+  const ForEmployersRoute();
+  static const path = 'for-employers';
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return const ForEmployersView();
   }
 }

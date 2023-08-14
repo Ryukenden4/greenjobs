@@ -21,20 +21,22 @@ abstract class EnvInfo {
 
 extension _EnvProperties on AppEnvironment {
   // App Title
-  static final appTitle = dotenv.get('APP_TITLE');
+  static final appTitle = 'GreenJobs';
 
   // APIs
-  static final supabaseApiUrlProd = dotenv.get('SUPABASE_API_URL_PROD');
-  static final supabaseApiBaseUrlProd = dotenv.get('SUPABASE_API_BASEURL_PROD');
-  static final supabaseAnonKeyProd = dotenv.get('SUPABASE_ANON_KEY_PROD');
+  static final supabaseApiUrlProd = 'https://prtveipiolzqpwugcmpe.supabase.co';
+  static final supabaseApiBaseUrlProd = 'prtveipiolzqpwugcmpe.supabase.co';
+  static final supabaseAnonKeyProd =
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBydHZlaXBpb2x6cXB3dWdjbXBlIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTE3Njk0NDAsImV4cCI6MjAwNzM0NTQ0MH0.nByoUIjB_Y4PyViW766eLvdVgD0Bfln6e0IYELbghdY';
   static final supabaseServiceRoleKeyProd =
-      dotenv.get('SUPABASE_SERVICE_ROLE_KEY_PROD');
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBydHZlaXBpb2x6cXB3dWdjbXBlIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY5MTc2OTQ0MCwiZXhwIjoyMDA3MzQ1NDQwfQ.zuPIQ-dGkC7WLlM53hxorLgJNvcO4EGqreNhJ8f8bIE';
 
-  static final supabaseApiUrlDev = dotenv.get('SUPABASE_API_URL_DEV');
-  static final supabaseApiBaseUrlDev = dotenv.get('SUPABASE_API_BASEURL_DEV');
-  static final supabaseAnonKeyDev = dotenv.get('SUPABASE_ANON_KEY_DEV');
+  static final supabaseApiUrlDev = 'http://localhost:54321';
+  static final supabaseApiBaseUrlDev = 'localhost:54321';
+  static final supabaseAnonKeyDev =
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24iLCJleHAiOjE5ODM4MTI5OTZ9.CRXP1A7WOeoJeXxjNni43kdQwgnWNReilDMblYTn_I0';
   static final supabaseServiceRoleKeyDev =
-      dotenv.get('SUPABASE_SERVICE_ROLE_KEY_DEV');
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImV4cCI6MTk4MzgxMjk5Nn0.EGIM96RAZx35lJzdJsyH-qQwv8Hdp7fsn3W0YpN81IU';
 
   static final _appTitles = {
     AppEnvironment.DEV: '$appTitle Dev',

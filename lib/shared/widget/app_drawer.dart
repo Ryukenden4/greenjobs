@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:greenjobs/routes/routes.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -25,15 +26,26 @@ class MainAppDrawerState extends ConsumerState<MainAppDrawer> {
                     ))),
         ListTile(
           leading: const Icon(Icons.work),
-          title: const SelectableText('Jobs'),
+          title: const Text('Jobs'),
           onTap: () => const JobsRoute().go(context),
+          selected: GoRouterState.of(context)
+              .uri
+              .toString()
+              .startsWith('/${JobsRoute.path}'),
         ),
         ListTile(
           leading: Icon(Icons.store),
-          title: SelectableText('Companies'),
+          title: Text('Companies'),
         ),
         ListTile(
-            leading: Icon(Icons.groups), title: SelectableText('For Employer')),
+          leading: Icon(Icons.groups),
+          title: Text('For Employer'),
+          onTap: () => const ForEmployersRoute().go(context),
+          selected: GoRouterState.of(context)
+              .uri
+              .toString()
+              .startsWith('/${ForEmployersRoute.path}'),
+        ),
         Expanded(
           child: Column(mainAxisAlignment: MainAxisAlignment.end, children: [
             Padding(

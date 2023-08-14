@@ -98,6 +98,10 @@ RouteBase get $shellRoute => ShellRouteData.$route(
                 ),
               ],
             ),
+            GoRouteData.$route(
+              path: 'for-employers',
+              factory: $ForEmployersRouteExtension._fromState,
+            ),
           ],
         ),
       ],
@@ -148,6 +152,24 @@ extension $JobDetailsRouteExtension on JobDetailsRoute {
 
   String get location => GoRouteData.$location(
         '/jobs/${Uri.encodeComponent(jobId)}',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $ForEmployersRouteExtension on ForEmployersRoute {
+  static ForEmployersRoute _fromState(GoRouterState state) =>
+      const ForEmployersRoute();
+
+  String get location => GoRouteData.$location(
+        '/for-employers',
       );
 
   void go(BuildContext context) => context.go(location);

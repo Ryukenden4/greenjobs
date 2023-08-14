@@ -47,9 +47,7 @@ class RouterListenable extends _$RouterListenable implements Listenable {
       }
     }
 
-    return _authStatus == AuthenticationStatus.authenticated
-        ? null
-        : LoginRoute.path;
+    return null;
   }
 
   /// Adds [GoRouter]'s listener as specified by its [Listenable].
